@@ -8,8 +8,10 @@ function App() {
   useEffect(() => {
     if (!listening) {
       // this works when the server is running locally
-      // const events = new EventSource('http://localhost:8787/events');
-      const events = new EventSource('https://sse-proto.james-fremen.workers.dev');
+      //const events = new EventSource('http://localhost:8787/events');
+
+      // this works when the server is running on Cloudflare
+      const events = new EventSource('https://sse-proto.james-fremen.workers.dev/events');
 
       events.onmessage = (event) => {
         console.log(`Stringified event: ${JSON.stringify(event)}`)
